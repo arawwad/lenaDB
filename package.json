@@ -1,5 +1,5 @@
 {
-  "name": "lenaDB",
+  "name": "lenadb",
   "version": "0.0.1",
   "description": "Wrapper for indexd db",
   "main": "dist/index.js",
