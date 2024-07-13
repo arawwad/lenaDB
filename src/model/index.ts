@@ -2,9 +2,14 @@ export class DBModel {
   #name: string
   #db: IDBDatabase
 
-  constructor(private name: string, private db: IDBDatabase) {
+  constructor(name: string, db: IDBDatabase) {
     this.#name = name
     this.#db = db
+  }
+
+  // deletes object store entirely
+  clean() {
+    this.#db.deleteObjectStore(this.#name)
   }
 
   add(entry: any) {
@@ -17,6 +22,7 @@ export class DBModel {
     }
     return new Promise((resolve, reject) => {
       transaction.oncomplete = () => {
+        console.log('hi')
         resolve(entry)
       }
       transaction.onerror = error => {

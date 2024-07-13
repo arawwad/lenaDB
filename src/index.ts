@@ -35,6 +35,7 @@ const openDb = <T extends Model>(config: Config<T>) => {
 export const init = async <T extends Model>(config: Config<T>): Promise<Models<T>> => {
   const db = await openDb(config);
   const models = config.models.reduce((acc, model) => {
+    // @ts-ignore
     acc[model.name] = new DBModel(model.name, db);
     return acc;
   }, {} as Models<T>);
